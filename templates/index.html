@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GS-CLAVER Church</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <i class="fas fa-church"></i>
+            <h1>GS-CLAVER</h1>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#schedule"><i class="far fa-calendar-alt"></i> Schedule</a></li>
+            <li><a href="#praise-and-worship"><i class="fas fa-music"></i> Praise and Worship</a></li>
+            <li><a href="#verses"><i class="fas fa-book-bible"></i> Verses</a></li>
+            <li><a href="#devotional"><i class="fas fa-pray"></i> Devotional</a></li>
+            <li><a href="#cell-group"><i class="fas fa-users"></i> Cell Group</a></li>
+            <li><a href="#church-organization"><i class="fas fa-sitemap"></i> Church Organization</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="schedule" class="card">
+            <h2><i class="far fa-calendar-alt"></i> Schedule</h2>
+            <div class="schedule-item">
+                <i class="fas fa-clock"></i>
+                <p>Mid-week: Wed 5:30-6:30pm</p>
+            </div>
+            <div class="schedule-item">
+                <i class="fas fa-sun"></i>
+                <p>Sunday Fellowship: 9:00 am</p>
+            </div>
+        </section>
+
+        <section id="praise-and-worship" class="card">
+            <h2><i class="fas fa-music"></i> Praise and Worship</h2>
+            <form id="song-form" class="worship-form">
+                <div class="form-group">
+                    <label for="song-title"><i class="fas fa-music"></i> Song Title:</label>
+                    <input type="text" id="song-title" name="song-title" placeholder="Enter song title" required>
+                </div>
+                <div class="form-group">
+                    <label for="song-category">Category:</label>
+                    <select id="song-category" name="song-category" required>
+                        <optgroup label="Praise">
+                            <option value="opening-praise">Opening Praise</option>
+                            <option value="mid-praise">Mid Praise</option>
+                            <option value="high-praise">High Praise</option>
+                        </optgroup>
+                        <optgroup label="Worship">
+                            <option value="worship">Worship</option>
+                            <option value="exaltation">Exaltation</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <button type="submit"><i class="fas fa-plus"></i> Add Song</button>
+            </form>
+
+            <div class="song-categories">
+                <div class="category-section">
+                    <h3>Praise Songs</h3>
+                    <div class="category-group">
+                        <h4>Opening Praise</h4>
+                        <ul id="opening-praise-list" class="song-list"></ul>
+                    </div>
+                    <div class="category-group">
+                        <h4>Mid Praise</h4>
+                        <ul id="mid-praise-list" class="song-list"></ul>
+                    </div>
+                    <div class="category-group">
+                        <h4>High Praise</h4>
+                        <ul id="high-praise-list" class="song-list"></ul>
+                    </div>
+                </div>
+                
+                <div class="category-section">
+                    <h3>Worship Songs</h3>
+                    <div class="category-group">
+                        <h4>Worship</h4>
+                        <ul id="worship-list" class="song-list"></ul>
+                    </div>
+                    <div class="category-group">
+                        <h4>Exaltation</h4>
+                        <ul id="exaltation-list" class="song-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="verses" class="card">
+            <h2><i class="fas fa-book-bible"></i> Bible Verses</h2>
+            <form id="verse-form" class="verse-form">
+                <div class="form-group">
+                    <label for="verse-reference"><i class="fas fa-bookmark"></i> Bible Reference:</label>
+                    <input type="text" id="verse-reference" name="verse-reference" placeholder="e.g., John 3:16" required>
+                </div>
+                <div class="form-group">
+                    <label for="verse-category">Category:</label>
+                    <select id="verse-category" name="verse-category" required>
+                        <option value="">Select a Category</option>
+                        <option value="daily-bread">Daily Bread</option>
+                        <option value="encouragement">Encouragement</option>
+                        <option value="faith">Faith</option>
+                        <option value="love">Love</option>
+                        <option value="hope">Hope</option>
+                        <option value="prayer">Prayer</option>
+                        <option value="worship">Worship</option>
+                        <option value="salvation">Salvation</option>
+                        <option value="healing">Healing</option>
+                        <option value="guidance">Guidance</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="verse-text">Verse Text:</label>
+                    <textarea id="verse-text" name="verse-text" rows="4" placeholder="Enter the verse text" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="verse-notes">Notes (Optional):</label>
+                    <textarea id="verse-notes" name="verse-notes" rows="2" placeholder="Add your personal notes or reflections"></textarea>
+                </div>
+                <button type="submit"><i class="fas fa-plus"></i> Add Verse</button>
+            </form>
+
+            <div class="verse-categories">
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="daily-bread">Daily Bread</button>
+                    <button class="filter-btn" data-category="encouragement">Encouragement</button>
+                    <button class="filter-btn" data-category="faith">Faith</button>
+                    <!-- Add more filter buttons as needed -->
+                </div>
+                <div id="verses-list" class="verses-list">
+                    <!-- Verses will be dynamically added here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="devotional" class="card">
+            <h2><i class="fas fa-pray"></i> Devotional</h2>
+            <form id="devotional-form" class="devotional-form">
+                <div class="form-group">
+                    <label for="devotional-date"><i class="fas fa-calendar"></i> Date:</label>
+                    <input type="date" id="devotional-date" name="devotional-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="devotional-title"><i class="fas fa-heading"></i> Title:</label>
+                    <input type="text" id="devotional-title" name="devotional-title" placeholder="Enter devotional title" required>
+                </div>
+                <div class="form-group">
+                    <label for="devotional-verse"><i class="fas fa-book-bible"></i> Key Verse:</label>
+                    <input type="text" id="devotional-verse" name="devotional-verse" placeholder="Enter Bible reference" required>
+                </div>
+                <div class="form-group">
+                    <label for="devotional-content">Content:</label>
+                    <textarea id="devotional-content" name="devotional-content" rows="4" placeholder="Enter devotional content" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="devotional-application">Application:</label>
+                    <textarea id="devotional-application" name="devotional-application" rows="2" placeholder="How can we apply this?" required></textarea>
+                </div>
+                <button type="submit"><i class="fas fa-plus"></i> Add Devotional</button>
+            </form>
+
+            <div id="devotionals-list" class="devotionals-list">
+                <!-- Devotionals will be added here -->
+            </div>
+        </section>
+
+        <section id="cell-group" class="card">
+            <h2><i class="fas fa-users"></i> Cell Group</h2>
+            <form id="cell-group-form" class="cell-group-form">
+                <div class="form-group">
+                    <label for="meeting-date"><i class="fas fa-calendar"></i> Meeting Date:</label>
+                    <input type="date" id="meeting-date" name="meeting-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="meeting-time"><i class="fas fa-clock"></i> Time:</label>
+                    <input type="time" id="meeting-time" name="meeting-time" required>
+                </div>
+                <div class="form-group">
+                    <label for="meeting-location"><i class="fas fa-map-marker-alt"></i> Location:</label>
+                    <input type="text" id="meeting-location" name="meeting-location" placeholder="Enter meeting location" required>
+                </div>
+                <div class="form-group">
+                    <label for="meeting-topic"><i class="fas fa-book"></i> Topic:</label>
+                    <input type="text" id="meeting-topic" name="meeting-topic" placeholder="Enter discussion topic" required>
+                </div>
+                <div class="form-group">
+                    <label for="meeting-notes">Discussion Notes:</label>
+                    <textarea id="meeting-notes" name="meeting-notes" rows="4" placeholder="Enter meeting notes" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="prayer-requests"><i class="fas fa-pray"></i> Prayer Requests:</label>
+                    <textarea id="prayer-requests" name="prayer-requests" rows="3" placeholder="Enter prayer requests"></textarea>
+                </div>
+                <button type="submit"><i class="fas fa-plus"></i> Add Meeting</button>
+            </form>
+
+            <div id="cell-group-list" class="cell-group-list">
+                <!-- Cell group meetings will be added here -->
+            </div>
+        </section>
+
+        <section id="church-organization" class="card">
+            <h2><i class="fas fa-sitemap"></i> Church Organization</h2>
+            <p>Details about the church organization</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 GS-CLAVER | <i class="fas fa-heart"></i> Serving God's Community</p>
+    </footer>
+    <!-- Your custom JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
